@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== FONTS ===== */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces[SOFT,WONK,opsz,wght].woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== DESIGN TOKENS ===== */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Core palette — warm ink + sunrise amber */
+    --background: 0.97 0.008 85;
+    --foreground: 0.18 0.025 250;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 250;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 250;
+
+    /* Primary: Deep ink teal */
+    --primary: 0.28 0.065 220;
+    --primary-foreground: 0.98 0 0;
+
+    /* Secondary: Warm cream */
+    --secondary: 0.94 0.018 80;
+    --secondary-foreground: 0.25 0.04 220;
+
+    /* Muted */
+    --muted: 0.92 0.01 80;
+    --muted-foreground: 0.5 0.02 240;
+
+    /* Accent: Sunrise amber */
+    --accent: 0.75 0.16 65;
+    --accent-foreground: 0.15 0 0;
+
+    /* Destructive */
+    --destructive: 0.58 0.22 28;
+    --destructive-foreground: 0.98 0 0;
+
+    /* Structural */
+    --border: 0.88 0.015 80;
+    --input: 0.88 0.015 80;
+    --ring: 0.55 0.1 220;
+
+    /* Chart / subject colors */
+    --chart-1: 0.72 0.18 55;   /* AI - warm amber */
+    --chart-2: 0.55 0.18 160;  /* Commerce - teal */
+    --chart-3: 0.55 0.18 240;  /* Maths - blue */
+    --chart-4: 0.58 0.2 320;   /* Computer - violet */
+    --chart-5: 0.65 0.15 30;   /* extra */
+
+    /* Sidebar */
+    --sidebar: 0.26 0.055 220;
+    --sidebar-foreground: 0.95 0.005 80;
+    --sidebar-primary: 0.75 0.16 65;
+    --sidebar-primary-foreground: 0.15 0 0;
+    --sidebar-accent: 0.35 0.07 220;
+    --sidebar-accent-foreground: 0.95 0.005 80;
+    --sidebar-border: 0.35 0.05 220;
+    --sidebar-ring: 0.55 0.1 220;
+
+    /* Subject badge tokens */
+    --subject-ai-bg: 0.96 0.06 65;
+    --subject-ai-fg: 0.45 0.14 50;
+    --subject-ai-bar: 0.72 0.18 55;
+
+    --subject-commerce-bg: 0.94 0.05 160;
+    --subject-commerce-fg: 0.35 0.12 160;
+    --subject-commerce-bar: 0.55 0.18 160;
+
+    --subject-maths-bg: 0.93 0.06 240;
+    --subject-maths-fg: 0.35 0.12 240;
+    --subject-maths-bar: 0.55 0.18 240;
+
+    --subject-computer-bg: 0.93 0.06 320;
+    --subject-computer-fg: 0.35 0.12 320;
+    --subject-computer-bar: 0.58 0.2 320;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Timeline ruler lines */
+  .timeline-grid {
+    background-image: repeating-linear-gradient(
+      to right,
+      oklch(0.88 0.015 80) 0px,
+      oklch(0.88 0.015 80) 1px,
+      transparent 1px,
+      transparent calc(100% / 13)
+    );
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", serif;
+  }
+
+  /* Subject color utilities */
+  .subject-ai {
+    background-color: oklch(var(--subject-ai-bg));
+    color: oklch(var(--subject-ai-fg));
+    border-left: 3px solid oklch(var(--subject-ai-bar));
+  }
+  .subject-commerce {
+    background-color: oklch(var(--subject-commerce-bg));
+    color: oklch(var(--subject-commerce-fg));
+    border-left: 3px solid oklch(var(--subject-commerce-bar));
+  }
+  .subject-maths {
+    background-color: oklch(var(--subject-maths-bg));
+    color: oklch(var(--subject-maths-fg));
+    border-left: 3px solid oklch(var(--subject-maths-bar));
+  }
+  .subject-computer {
+    background-color: oklch(var(--subject-computer-bg));
+    color: oklch(var(--subject-computer-fg));
+    border-left: 3px solid oklch(var(--subject-computer-bar));
+  }
+
+  /* Subject badge dot */
+  .subject-dot-ai { background-color: oklch(var(--subject-ai-bar)); }
+  .subject-dot-commerce { background-color: oklch(var(--subject-commerce-bar)); }
+  .subject-dot-maths { background-color: oklch(var(--subject-maths-bar)); }
+  .subject-dot-computer { background-color: oklch(var(--subject-computer-bar)); }
+}
